@@ -44,23 +44,23 @@ def preprocess_image(img):
 
 # Streamlit UI
 st.title("Mango Leaf Disease Detection")
-st.write("Upload an image of a mango leaf or use your camera to capture one for disease prediction and treatment information.")
+st.write("Upload an image or capture one to identify any mango leaf disease and get treatment guidance.")
 
 # Option to upload an image file or capture from camera
-uploaded_file = st.file_uploader("Choose an image...", type="jpg")
-camera_image = st.camera_input("Or take a picture...")
+uploaded_file = st.file_uploader("Choose an image file", type=["jpg", "jpeg", "png"])
+camera_image = st.camera_input("Or take a photo")
 
 # Load the image for prediction
 img = None
-if uploaded_file is not None:
+if uploaded_file:
     img = Image.open(uploaded_file)
     st.image(img, caption='Uploaded Image', use_column_width=True)
-elif camera_image is not None:
+elif camera_image:
     img = Image.open(camera_image)
     st.image(img, caption='Captured Image', use_column_width=True)
 
-if img is not None:
-    st.write("Classifying...")
+if img:
+    st.write("Analyzing...")
 
     # Preprocess the image
     preprocessed_image = preprocess_image(img)
@@ -73,7 +73,7 @@ if img is not None:
     # Get the treatment information for the predicted disease
     treatment_info = get_treatment_info(predicted_disease)
 
-    st.write(f"**Predicted Disease:** {predicted_disease}")
+    st.subheader(f"Predicted Disease: {predicted_disease}")
     st.write(f"**Drug:** {treatment_info['drug']}")
     st.write(f"**Procedures:** {treatment_info['procedures']}")
     st.write(f"**Duration:** {treatment_info['duration']}")
