@@ -1,8 +1,8 @@
-
 import streamlit as st
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 import numpy as np
+from PIL import Image
 
 # Load the trained model
 model = load_model('model.h5')
@@ -22,60 +22,17 @@ disease_names = [
 
 # Function to get treatment information based on the disease name
 def get_treatment_info(disease_name):
-    if disease_name == 'Anthracnose':
-        return {
-            "drug": "Chlorothalonil or Copper-based fungicides",
-            "procedures": "Apply fungicides at 10-15 day intervals, especially during wet seasons. Ensure thorough coverage of the leaves and fruit.",
-            "duration": "Continue treatment from flowering until the fruit is harvested."
-        }
-    elif disease_name == 'Bacterial Canker':
-        return {
-            "drug": "Copper-based sprays",
-            "procedures": "Apply copper sprays during early stages of the disease. Prune infected branches and ensure good air circulation.",
-            "duration": "Apply every 7-14 days depending on the severity of the infection."
-        }
-    elif disease_name == 'Cutting Weevil':
-        return {
-            "drug": "Chlorpyrifos or Carbaryl",
-            "procedures": "Apply insecticides at the base of the tree and affected areas. Monitor for weevil activity and apply as necessary.",
-            "duration": "Apply during the weevil's active period, typically in the early growing season."
-        }
-    elif disease_name == 'Die Back':
-        return {
-            "drug": "Carbendazim or Copper Oxychloride",
-            "procedures": "Apply fungicides to the affected areas. Prune and destroy affected branches.",
-            "duration": "Treat immediately upon detection and continue as necessary."
-        }
-    elif disease_name == 'Gall Midge':
-        return {
-            "drug": "Imidacloprid or Abamectin",
-            "procedures": "Spray insecticides during the early stages of infestation. Ensure proper coverage of the affected areas.",
-            "duration": "Apply every 10-14 days during active infestation."
-        }
-    elif disease_name == 'Healthy':
-        return {
-            "drug": "None",
-            "procedures": "Maintain regular monitoring and good agricultural practices.",
-            "duration": "Ongoing."
-        }
-    elif disease_name == 'Powdery Mildew':
-        return {
-            "drug": "Sulfur-based fungicides or Potassium bicarbonate",
-            "procedures": "Apply fungicides at the first sign of disease. Ensure thorough coverage of leaves.",
-            "duration": "Apply every 7-10 days during the growing season."
-        }
-    elif disease_name == 'Sooty Mold':
-        return {
-            "drug": "Horticultural oil or Neem oil",
-            "procedures": "Apply oil sprays to affected areas. Ensure good coverage and repeat applications as necessary.",
-            "duration": "Apply every 7-14 days until the mold is controlled."
-        }
-    else:
-        return {
-            "drug": "Unknown",
-            "procedures": "No procedures available.",
-            "duration": "Unknown."
-        }
+    treatments = {
+        'Anthracnose': {"drug": "Chlorothalonil or Copper-based fungicides", "procedures": "Apply fungicides at 10-15 day intervals, especially during wet seasons. Ensure thorough coverage of the leaves and fruit.", "duration": "Continue treatment from flowering until the fruit is harvested."},
+        'Bacterial Canker': {"drug": "Copper-based sprays", "procedures": "Apply copper sprays during early stages of the disease. Prune infected branches and ensure good air circulation.", "duration": "Apply every 7-14 days depending on the severity of the infection."},
+        'Cutting Weevil': {"drug": "Chlorpyrifos or Carbaryl", "procedures": "Apply insecticides at the base of the tree and affected areas. Monitor for weevil activity and apply as necessary.", "duration": "Apply during the weevil's active period, typically in the early growing season."},
+        'Die Back': {"drug": "Carbendazim or Copper Oxychloride", "procedures": "Apply fungicides to the affected areas. Prune and destroy affected branches.", "duration": "Treat immediately upon detection and continue as necessary."},
+        'Gall Midge': {"drug": "Imidacloprid or Abamectin", "procedures": "Spray insecticides during the early stages of infestation. Ensure proper coverage of the affected areas.", "duration": "Apply every 10-14 days during active infestation."},
+        'Healthy': {"drug": "None", "procedures": "Maintain regular monitoring and good agricultural practices.", "duration": "Ongoing."},
+        'Powdery Mildew': {"drug": "Sulfur-based fungicides or Potassium bicarbonate", "procedures": "Apply fungicides at the first sign of disease. Ensure thorough coverage of leaves.", "duration": "Apply every 7-10 days during the growing season."},
+        'Sooty Mold': {"drug": "Horticultural oil or Neem oil", "procedures": "Apply oil sprays to affected areas. Ensure good coverage and repeat applications as necessary.", "duration": "Apply every 7-14 days until the mold is controlled."}
+    }
+    return treatments.get(disease_name, {"drug": "Unknown", "procedures": "No procedures available.", "duration": "Unknown."})
 
 # Preprocess the image
 def preprocess_image(img):
@@ -87,14 +44,22 @@ def preprocess_image(img):
 
 # Streamlit UI
 st.title("Mango Leaf Disease Detection")
-st.write("Upload an image of a mango leaf to predict the disease and get treatment information.")
+st.write("Upload an image of a mango leaf or use your camera to capture one for disease prediction and treatment information.")
 
+# Option to upload an image file or capture from camera
 uploaded_file = st.file_uploader("Choose an image...", type="jpg")
+camera_image = st.camera_input("Or take a picture...")
 
+# Load the image for prediction
+img = None
 if uploaded_file is not None:
-    img = image.load_img(uploaded_file, target_size=(256, 256))
-    st.image(img, caption='Uploaded Image.', use_column_width=True)
-    st.write("")
+    img = Image.open(uploaded_file)
+    st.image(img, caption='Uploaded Image', use_column_width=True)
+elif camera_image is not None:
+    img = Image.open(camera_image)
+    st.image(img, caption='Captured Image', use_column_width=True)
+
+if img is not None:
     st.write("Classifying...")
 
     # Preprocess the image
