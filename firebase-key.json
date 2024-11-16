@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "mango-disease-detection",
+  "private_key_id": "5af28b1237cd054a68960657291633bb142c4499",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDERy0u7KtUQIu0\nxhntEIUAIn471oV/hO0Gfb7ZqTMhi1ragrn+CFiwkV42MODG0JHlJtskxzt6bfaT\n8awzws4qnEw4LUubyxj5PDGWx72Wxv4L4KvvDbNfflngUsY7SXkiG3tcamzVsB1P\nhuNFU2Sv1x1C/Vtfn4QsDT60Kb8k/jrx6RYxT49RpQorCekFRp0b+EqqzR+odlR/\nDt0KHZlja5bvMUKSE9bMQtmUldGei6gjywPeOHBm/y9A+ZE9P9fjSbqO8fTl60Cx\nFtzuV0cWMuC9MdgruCmvDPAk2tBpDjHcSn30Xx1MsWYMfUhRIyjEsSrhXvNhhykQ\nliW+kJsHAgMBAAECggEADnguIolxT/K6LzIeHdXb7YNIHw0qJkPHCCAjqP7KNYIv\nyRqzWhYvbkTT1yw0mzOBAzhMFiKshdKux3/yG+wT2sb5miKXXP1/R9BiL3q7b+7C\nMl9LuCx1uWfNJGELGrpzOEp3sPu/g46feooNHcKPZ6R0vx2CVkL3hsUrMYjqUxsG\n59KBSGFMW5kwnCPJTPNXKTMdjOxlw2r7smyXcmTZXaaB83zYHKtX401SSBCPqvcX\ntJye38CwR82OkYuyBhCPfW2/EHjjvKW6jO+NXmiE8xPOV6oJcqAxIULNqK1DT5gm\nfbnHeSScbBElxT6gaiQXzIFp1bBgslaSorOKUtNdsQKBgQD6oK1YMuiQz/Mu80ra\nvITI2y6uVTU1b19Zu0Yg0hzgeWUGTplEFef8uq13HKkmNZmLWMQnQAQvgQfkrP5E\ngNQs4YdS0A1hAF1WknzRvQbc2hRcalumbjVNfBlQtVlFDAMlNqBYlHYEtYjbqNs2\nFwNCJnVH0fQ08oRwud/KyPwiMwKBgQDIfEFM3yTuxlrpGcUOLKzXFfWD4y26HsS4\nI1KmlT66+MxVz77od9HijD0GDjkOamOcgithNUbeNarvNGDYtMt1IwpoH2cyxw/Y\nz3fnVwMEReZGZERidB//n6ZsoWgcbtcU9H7hSjdvPfNHdoLKlSpcN/BzO88m/i+j\nHI7g21mX3QKBgHLPhFkxCQS9nkNVxGarkZCJh7ro4bUWzfFHLvr+Bah3M+ZNvzxH\nZLyLr8cu4/XS/AGvqjvowYIZc8o3zUsIUSo2Lk2rbVWQWzG7bV6PX0Nwy38CYfW9\n6sESJm6ohLpypEY53f52FBJYLtehZLpElIOLJpK+BUb0CeOx4mj85TOtAoGBALuq\n7Glr3COTE5ht4fLRyP0Rdh/98Vju4lBH6F89B1p3+LY+4EK1noeFpL3dZHVlC1d+\n1eKJv4vUCu0dR6azHlzI7z3mX3C9u8zE8EViQtWmJNcxln3em/Fp3ZyEPnOXIchg\n0cBL+7Yq9GapveaqWNu4FWGY0+F5QNhbrDc5vRUVAoGAQgBXvdl09VUGASUErCNq\ncbAqjSMrgLviprD2TJClX316U4cBUtZL87hXioHB0yfN9YFLNOLiw/NRbXeUBoYD\nJFbczpDfny2VU0MfIvzx24LluFB3mAww+dcBJ0Dd6FjN/KeFMMa4IdXWfGxTwmuE\nj2oRsG/Zm/2SUxBP0V5a5G4=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-o7gm2@mango-disease-detection.iam.gserviceaccount.com",
+  "client_id": "109172349683636610875",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-o7gm2%40mango-disease-detection.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
